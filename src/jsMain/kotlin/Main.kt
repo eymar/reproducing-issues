@@ -1,34 +1,18 @@
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+@file:Suppress("Unused", "NOTHING_TO_INLINE", "NESTED_CLASS_IN_EXTERNAL_INTERFACE", "INLINE_EXTERNAL_DECLARATION", "WRONG_BODY_OF_EXTERNAL_DECLARATION", "NESTED_EXTERNAL_DECLARATION", "ClassName")
 
-@Serializable
-data class Data(val text: String)
+external interface MyI {
+   companion object {
+      inline val Value1 get() = MyI("value1")
+      inline val Value2 get() = MyI("value2")
+   }
+}
+
+inline fun MyI(value: String) = value.unsafeCast<MyI>()
+
+fun useMyI(myI: MyI) {
+   println("Using MyI = " + myI.unsafeCast<String>())
+}
 
 fun main() {
-    println(Json.encodeToString(Data.serializer(), Data("Hello from kotlinx-serialization")))
-//    var count: Int by mutableStateOf(0)
-//
-//    renderComposable(rootElementId = "root") {
-//        Div({ style { padding(25.px) } }) {
-//            Button(attrs = {
-//                onClick { count -= 1 }
-//            }) {
-//                Text("-")
-//            }
-//
-//            Span({style { padding(15.px) }}) {
-//                Text("$count")
-//            }
-//
-//            Button({
-//                onClick { count += 1 }
-//            }) {
-//                Text("+")
-//            }
-//        }
-//
-//        P {
-//            Text(Json.encodeToString(Data.serializer(), Data("Hello from kotlinx-serialization")))
-//        }
-//    }
+   useMyI(MyI.Value1)
 }

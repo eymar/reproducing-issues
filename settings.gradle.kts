@@ -6,5 +6,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "compose-web-serialization-repro"
+rootProject.name = "repr-external-interface-1.5.21"
 
