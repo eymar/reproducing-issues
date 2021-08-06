@@ -7,4 +7,4 @@ pluginManagement {
 }
 
 rootProject.name = "compose-web-serialization-repro"
-
+include("data")
